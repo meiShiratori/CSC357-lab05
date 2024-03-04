@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     }
     else if(pid1 == 0)
     {
-        // Child process 1: Executes the odds program
+
         if(execl("./odds", "odds", argv[1], (char *)NULL) == -1)
         {
             perror("Error: exec failed");
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
     }
     else if(pid2 == 0)
     {
-        // Child process 2: Executes the evens program
+
         if(execl("./evens", "evens", argv[1], (char *)NULL) == -1)
         {
             perror("Error: exec failed");
@@ -45,7 +45,6 @@ int main(int argc, char *argv[])
         }
     }
 
-    // Parent process: Waits for both child processes to terminate
     waitpid(pid1, NULL, 0);
     waitpid(pid2, NULL, 0);
 
